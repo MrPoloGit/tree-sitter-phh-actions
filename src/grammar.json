@@ -1,0 +1,306 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "phh_actions",
+  "rules": {
+    "action_line": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "dealer_action"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "commentary"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "player_action"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "commentary"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "commentary"
+            }
+          ]
+        },
+        {
+          "type": "BLANK"
+        }
+      ]
+    },
+    "dealer_action": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "actor",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dealer"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "board_deal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "hole_deal"
+            }
+          ]
+        }
+      ]
+    },
+    "dealer": {
+      "type": "STRING",
+      "value": "d"
+    },
+    "board_deal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "db"
+        },
+        {
+          "type": "FIELD",
+          "name": "cards",
+          "content": {
+            "type": "SYMBOL",
+            "name": "cards"
+          }
+        }
+      ]
+    },
+    "hole_deal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "dh"
+        },
+        {
+          "type": "FIELD",
+          "name": "player",
+          "content": {
+            "type": "SYMBOL",
+            "name": "player_ref"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "cards",
+          "content": {
+            "type": "SYMBOL",
+            "name": "cards"
+          }
+        }
+      ]
+    },
+    "player_action": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "actor",
+          "content": {
+            "type": "SYMBOL",
+            "name": "player_ref"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bring_in"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "bet"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "check_or_call"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "fold"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "stand_pat_or_discard"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "show_or_muck"
+            }
+          ]
+        }
+      ]
+    },
+    "player_ref": {
+      "type": "PATTERN",
+      "value": "p[0-9]+"
+    },
+    "bring_in": {
+      "type": "STRING",
+      "value": "pb"
+    },
+    "bet": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "cbr"
+        },
+        {
+          "type": "FIELD",
+          "name": "amount",
+          "content": {
+            "type": "SYMBOL",
+            "name": "amount"
+          }
+        }
+      ]
+    },
+    "check_or_call": {
+      "type": "STRING",
+      "value": "cc"
+    },
+    "fold": {
+      "type": "STRING",
+      "value": "f"
+    },
+    "stand_pat_or_discard": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "sd"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "cards",
+              "content": {
+                "type": "SYMBOL",
+                "name": "cards"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "show_or_muck": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "sm"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "cards",
+              "content": {
+                "type": "SYMBOL",
+                "name": "cards"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "amount": {
+      "type": "PATTERN",
+      "value": "[0-9]+(\\.[0-9]+)?"
+    },
+    "cards": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "repeat_marker"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "card"
+          }
+        }
+      ]
+    },
+    "card": {
+      "type": "PATTERN",
+      "value": "[23456789TJQKA?][cdhs?]"
+    },
+    "repeat_marker": {
+      "type": "STRING",
+      "value": "-"
+    },
+    "commentary": {
+      "type": "PATTERN",
+      "value": "#[^\\n]*"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s+"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": [],
+  "reserved": {}
+}

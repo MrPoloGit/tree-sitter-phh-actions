@@ -1,0 +1,267 @@
+[
+  {
+    "type": "action_line",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "commentary",
+          "named": true
+        },
+        {
+          "type": "dealer_action",
+          "named": true
+        },
+        {
+          "type": "player_action",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bet",
+    "named": true,
+    "fields": {
+      "amount": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "amount",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "board_deal",
+    "named": true,
+    "fields": {
+      "cards": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "cards",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "cards",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "card",
+          "named": true
+        },
+        {
+          "type": "repeat_marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dealer_action",
+    "named": true,
+    "fields": {
+      "actor": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "dealer",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "board_deal",
+          "named": true
+        },
+        {
+          "type": "hole_deal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hole_deal",
+    "named": true,
+    "fields": {
+      "cards": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "cards",
+            "named": true
+          }
+        ]
+      },
+      "player": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "player_ref",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "player_action",
+    "named": true,
+    "fields": {
+      "actor": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "player_ref",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bet",
+          "named": true
+        },
+        {
+          "type": "bring_in",
+          "named": true
+        },
+        {
+          "type": "check_or_call",
+          "named": true
+        },
+        {
+          "type": "fold",
+          "named": true
+        },
+        {
+          "type": "show_or_muck",
+          "named": true
+        },
+        {
+          "type": "stand_pat_or_discard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "show_or_muck",
+    "named": true,
+    "fields": {
+      "cards": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "cards",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "stand_pat_or_discard",
+    "named": true,
+    "fields": {
+      "cards": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "cards",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "amount",
+    "named": true
+  },
+  {
+    "type": "bring_in",
+    "named": true
+  },
+  {
+    "type": "card",
+    "named": true
+  },
+  {
+    "type": "cbr",
+    "named": false
+  },
+  {
+    "type": "check_or_call",
+    "named": true
+  },
+  {
+    "type": "commentary",
+    "named": true
+  },
+  {
+    "type": "db",
+    "named": false
+  },
+  {
+    "type": "dealer",
+    "named": true
+  },
+  {
+    "type": "dh",
+    "named": false
+  },
+  {
+    "type": "fold",
+    "named": true
+  },
+  {
+    "type": "player_ref",
+    "named": true
+  },
+  {
+    "type": "repeat_marker",
+    "named": true
+  },
+  {
+    "type": "sd",
+    "named": false
+  },
+  {
+    "type": "sm",
+    "named": false
+  }
+]

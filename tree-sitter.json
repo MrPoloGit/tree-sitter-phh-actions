@@ -1,0 +1,21 @@
+{
+  "grammars": [
+    {
+      "name": "phh_actions",
+      "camelcase": "PhhActions",
+      "scope": "source.phh.actions",
+      "path": ".",
+      "file-types": [],
+      "injection-regex": "^phh_actions$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for the PHH action-notation micro-language, injected into tree-sitter-phh's `actions` array strings",
+    "authors": [],
+    "links": {
+      "repository": "https://github.com/REPLACE_ME/tree-sitter-phh-actions"
+    }
+  }
+}
