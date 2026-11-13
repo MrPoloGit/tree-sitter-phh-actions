@@ -15,7 +15,7 @@
     "description": "Tree-sitter grammar for the PHH action-notation micro-language, injected into tree-sitter-phh's `actions` array strings",
     "authors": [],
     "links": {
-      "repository": "https://github.com/REPLACE_ME/tree-sitter-phh-actions"
+      "repository": "https://github.com/MrPoloGit/tree-sitter-phh-actions"
     }
   }
 }
