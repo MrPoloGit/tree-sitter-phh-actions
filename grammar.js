@@ -4,7 +4,7 @@
  *
  * This is a separate grammar from tree-sitter-phh on purpose: the contents
  * of an `actions` string are not TOML at all (phh-std/required.rst
- * "Actions"; phh/registry/actions.json). tree-sitter-phh injects it via
+ * "Actions"; phh-data/registry/actions.json). tree-sitter-phh injects it via
  * queries/injections.scm rather than parsing it inline.
  *
  * Grammar, per the spec: `[[Actor Action[ Arguments...]][ # Commentary]]`
@@ -14,7 +14,7 @@
  * `pN sm [cards]`), and the no-op case (empty, whitespace-only, or a
  * standalone `# commentary`).
  *
- * Card *legality* (e.g. short-deck forbidding ranks 2-5, phh/registry/
+ * Card *legality* (e.g. short-deck forbidding ranks 2-5, phh-data/registry/
  * cards.json) is deliberately NOT enforced here, that is an L1 registry/
  * semantic check (the PHH editor-support plan Section 4.6 leveling), not a
  * grammar (L0) concern. This grammar accepts any standard52 rank/suit
